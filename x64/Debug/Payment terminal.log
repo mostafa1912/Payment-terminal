@@ -1,1 +1,4 @@
-﻿
+﻿  card.c
+C:\Users\mosta\source\repos\Payment-terminal\card.c(5,1): warning C4026: function declared with formal parameter list
+C:\Users\mosta\source\repos\Payment-terminal\card.c(22,3): warning C4013: 'strcpy' undefined; assuming extern returning int
+  Payment terminal.vcxproj -> C:\Users\mosta\source\repos\Payment-terminal\x64\Debug\Payment terminal.exe
