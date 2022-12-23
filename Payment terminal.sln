@@ -5,30 +5,6 @@ VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Payment terminal", "Payment terminal.vcxproj", "{9D03FF57-C3E1-40D7-B018-971D5CECCA5D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Card", "Card", "{5DB94D31-C861-449F-B94E-94C73BA3C944}"
-	ProjectSection(SolutionItems) = preProject
-		card.c = card.c
-		card.h = card.h
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{82EBF7D8-605E-4F31-99E2-BD38DEB92CE0}"
-	ProjectSection(SolutionItems) = preProject
-		app.c = app.c
-		app.h = app.h
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Terminal", "Terminal", "{28B7D9D2-A817-4525-BEA2-4802506BD09A}"
-	ProjectSection(SolutionItems) = preProject
-		terminal.c = terminal.c
-		terminal.h = terminal.h
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{0F450310-BDCA-46F1-9771-B9C76B7C3F98}"
-	ProjectSection(SolutionItems) = preProject
-		server.c = server.c
-		server.h = server.h
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64

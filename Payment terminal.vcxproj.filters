@@ -15,31 +15,44 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="card.c">
+    <ClCompile Include="Terminal\terminal.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="app.c">
+    <ClCompile Include="App\App.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="server.c">
+    <ClCompile Include="Card\card.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="terminal.c">
+    <ClCompile Include="Server\server.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="card.h">
+    <ClInclude Include="Terminal\terminal.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="app.h">
+    <ClInclude Include="App\App.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="server.h">
+    <ClInclude Include="Card\card.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="terminal.h">
+    <ClInclude Include="Server\server.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="x64\Debug\Payment terminal.tlog\Payment terminal.lastbuildstate" />
+    <None Include="x64\Debug\Payment terminal.exe.recipe" />
+    <None Include=".gitignore" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="x64\Debug\Payment terminal.Build.CppClean.log" />
+    <Text Include="x64\Debug\Payment terminal.log" />
+    <Text Include="x64\Debug\Payment terminal.vcxproj.FileListAbsolute.txt" />
   </ItemGroup>
 </Project>

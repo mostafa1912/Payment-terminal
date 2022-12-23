@@ -19,16 +19,27 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="app.h" />
-    <ClInclude Include="card.h" />
-    <ClInclude Include="server.h" />
-    <ClInclude Include="terminal.h" />
+    <ClCompile Include="App\App.c" />
+    <ClCompile Include="Card\card.c" />
+    <ClCompile Include="main.c" />
+    <ClCompile Include="Server\server.c" />
+    <ClCompile Include="Terminal\terminal.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="app.c" />
-    <ClCompile Include="card.c" />
-    <ClCompile Include="server.c" />
-    <ClCompile Include="terminal.c" />
+    <ClInclude Include="App\App.h" />
+    <ClInclude Include="Card\card.h" />
+    <ClInclude Include="Server\server.h" />
+    <ClInclude Include="Terminal\terminal.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".gitignore" />
+    <None Include="x64\Debug\Payment terminal.exe.recipe" />
+    <None Include="x64\Debug\Payment terminal.tlog\Payment terminal.lastbuildstate" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="x64\Debug\Payment terminal.Build.CppClean.log" />
+    <Text Include="x64\Debug\Payment terminal.log" />
+    <Text Include="x64\Debug\Payment terminal.vcxproj.FileListAbsolute.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
