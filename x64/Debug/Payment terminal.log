@@ -1,3 +1,9 @@
-﻿  main.c
-C:\Users\mosta\source\repos\Payment-terminal\main.c(24,2): warning C4013: 'getCardExpiryDateTest' undefined; assuming extern returning int
+﻿  server.c
+C:\Users\mosta\source\repos\Payment-terminal\Server\server.c(44,41): warning C4133: 'function': incompatible types - from 'ST_terminalData_t *' to 'ST_transaction_t *'
+C:\Users\mosta\source\repos\Payment-terminal\Server\server.c(56,58): warning C4029: declared formal parameter list different from definition
+C:\Users\mosta\source\repos\Payment-terminal\Server\server.c(61,7): warning C4013: 'strcmp' undefined; assuming extern returning int
+C:\Users\mosta\source\repos\Payment-terminal\Server\server.c(98,4): warning C4013: 'strcpy' undefined; assuming extern returning int
+C:\Users\mosta\source\repos\Payment-terminal\Server\server.c(150,2): warning C4013: 'printf' undefined; assuming extern returning int
+C:\Users\mosta\source\repos\Payment-terminal\Server\server.c(54): warning C4715: 'recieveTransactionData': not all control paths return a value
+C:\Users\mosta\source\repos\Payment-terminal\Server\server.c(90): warning C4715: 'isAmountAvailable': not all control paths return a value
   Payment terminal.vcxproj -> C:\Users\mosta\source\repos\Payment-terminal\x64\Debug\Payment terminal.exe

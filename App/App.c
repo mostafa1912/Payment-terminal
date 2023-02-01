@@ -5,39 +5,28 @@
 
 
 
-extern ST_cardData_t user_card;
-extern ST_terminalData_t user_terminal;
+ST_cardData_t user_card;
+ST_terminalData_t user_terminal;
 extern int Account_NUM;
 extern ST_accountsDB_t accountsDB[255];
 extern ST_transaction_t transDB[255];
 int number_of_transactions;
 
 
+
 bool card() {
 
-	if (getCardHolderName(&user_card.cardHolderName) == CARD_OK)
-	{
-		printf("Please enter the  primary account number \n");
-		scanf("\n");
-		scanf("%[^\n]%*c", &user_card.primaryAccountNumber);
+	if (getCardHolderName(&user_card) == CARD_OK)
+	{		
 
-		if (getCardPAN(&user_card.primaryAccountNumber) == CARD_OK)
+		if (getCardExpiryDate(&user_card) == CARD_OK)
 		{
 
-			printf("Please enter the card expiry date \n");
-			scanf("\n");
-			scanf("%[^\n]%*c", &user_card.cardExpirationDate);
-
-
-
-			if (getCardExpiryDate(&user_card.cardExpirationDate) == CARD_OK)
-			{
-
+			if (getCardPAN(&user_card) == CARD_OK)
+			{				
 				return true;
 			}
-
 		}
-
 	}
 
 	return false;
@@ -50,19 +39,18 @@ bool card() {
 
 
 void terminal() {
-	printf("please enter the transaction date\n");
-	scanf("\n");
-	scanf("%[^\n]%*c", &(user_terminal.transactionDate));
-
+	
 	if (getTransactionDate(&user_terminal) == TERMINAL_OK) {
 
 		if (isCardExpired(&user_card, &user_terminal) == TERMINAL_OK) {
-			printf("Please enter the transaction amount\n");
-			scanf("%f", &user_terminal.transAmount);
-
+			
 			if (getTransactionAmount(&user_terminal) == TERMINAL_OK) {
+				
+				float m = 50000;
 
-				if (setMaxAmount(max_amount) == TERMINAL_OK) {
+				if (setMaxAmount(&user_terminal, &m ) == TERMINAL_OK) {
+
+		
 
 					if (isBelowMaxAmount(&user_terminal) == TERMINAL_OK)
 					{
@@ -104,6 +92,8 @@ void server() {
 		if (isBlockedAccount(accountsDB) == SERVER_OK) {
 
 			if (isAmountAvailable(&user_terminal, accountsDB) == SERVER_OK) {
+
+				accountsDB[Account_NUM].balance -= user_terminal.transAmount;
 
 				printf(" Successful transaction \n");
 

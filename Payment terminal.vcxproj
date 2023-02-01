@@ -21,9 +21,12 @@
   <ItemGroup>
     <ClCompile Include="App\App.c" />
     <ClCompile Include="Card\card.c" />
+    <ClCompile Include="Card\card_test.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="Server\server.c" />
+    <ClCompile Include="Server\server_test.c" />
     <ClCompile Include="Terminal\terminal.c" />
+    <ClCompile Include="Terminal\terminal_test.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App\App.h" />

@@ -18,10 +18,9 @@ int main() {
 
 
 	}
-
 	//getCardHolderNameTest();
 	
-	getCardExpiryDateTest();
+	//getCardExpiryDateTest();
 	
 	//getCardPANTest();
 		
@@ -47,6 +46,6 @@ int main() {
 		
 	//listSavedTransactionsTest();
 	
-	//appStart();
+	appStart();
 	
 }

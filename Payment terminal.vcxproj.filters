@@ -30,6 +30,15 @@
     <ClCompile Include="main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Card\card_test.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Terminal\terminal_test.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Server\server_test.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Terminal\terminal.h">

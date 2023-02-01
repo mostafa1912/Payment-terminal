@@ -3,7 +3,6 @@
 #ifndef  SERVER_H
 #define SERVER_H
 
-#define max_amount 50000
 
 typedef enum EN_transState_t
 {

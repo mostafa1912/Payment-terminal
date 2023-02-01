@@ -6,7 +6,7 @@ typedef struct ST_cardData_t
 {
 	uint8_t cardHolderName[25]; //25 characters
 	uint8_t primaryAccountNumber[20];//20 numbers stored in 20 bytes
-	uint8_t cardExpirationDate[6];
+	uint8_t cardExpirationDate[5];
 }ST_cardData_t;
 
 typedef enum EN_cardError_t
