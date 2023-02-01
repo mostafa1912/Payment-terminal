@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "terminal.h"
 
-ST_terminalData_t user_terminal;
+ST_terminalData_t userTerm;
 int expCardFlag = 0;
 
 EN_terminalError_t getTransactionDate(ST_terminalData_t* terminalData) {

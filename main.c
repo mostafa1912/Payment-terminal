@@ -2,8 +2,8 @@
 #include "App/App.h"
 extern ST_accountsDB_t accountsDB[255];
 extern ST_transaction_t transDB[255];
-extern ST_cardData_t user_card;
-extern ST_terminalData_t user_terminal;
+extern ST_cardData_t userCard;
+extern ST_terminalData_t userTerm;
 extern int Account_NUM;
 
 

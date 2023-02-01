@@ -1,4 +1,4 @@
-/* This portion of code is mostly from https://github.com/Hala-Abdelkader/Payment-Application */
+/* This portion of code is inspired by https://github.com/Hala-Abdelkader/Payment-Application */
 #include "server.h"
 
 ST_accountsDB_t accountsDB[255] = { 
@@ -8,47 +8,44 @@ ST_accountsDB_t accountsDB[255] = {
 	{12130,BLOCKED,"45782971234225824"},
 	{14600,RUNNING,"7541682485237863"} };
 
-ST_transaction_t transDB[255] = { 0 };
 
-extern ST_cardData_t user_card;
-extern ST_terminalData_t user_terminal;
+extern ST_terminalData_t userTerm;
+extern ST_cardData_t userCard;
 extern int expCardFlag;
-
-
+ST_transaction_t transDB[255] = { 0 };
+int num;
 int Account_NUM = 0;
-
-int NUM;
 
 extern int numberOfTransactions;
 
-EN_transState_t recieveTransactionData(ST_transaction_t* transData) {
+EN_transState_t recieveTransactionData(ST_transaction_t* transactionData) {
 
-	if (isValidAccount(&user_card, accountsDB) == ACCOUNT_NOT_FOUND) {
+	if (isValidAccount(&userCard, accountsDB) == ACCOUNT_NOT_FOUND) {
 
-		transData->transState = FRAUD_CARD;
+		transactionData->transactionState = FRAUD_CARD;
 		return FRAUD_CARD;
 	}
 
 	else if (isBlockedAccount(accountsDB) == BLOCKED_ACCOUNT) {
 
-		transData->transState = DECLINED_STOLEN_CARD;
+		transactionData->transactionState = DECLINED_STOLEN_CARD;
 		return DECLINED_STOLEN_CARD;
 
 	}
-	else if (isAmountAvailable(&user_terminal, accountsDB) == LOW_BALANCE) {
+	else if (isAmountAvailable(&userTerm, accountsDB) == LOW_BALANCE) {
 
-		transData->transState = DECLINED_INSUFFECIENT_FUND;
+		transactionData->transactionState = DECLINED_INSUFFECIENT_FUND;
 		return DECLINED_INSUFFECIENT_FUND;
 	}
 
-	else if (saveTransaction(&user_terminal) == SAVING_FAILED) {
+	else if (saveTransaction(&userTerm) == SAVING_FAILED) {
 
-		transData->transState = INTERNAL_SERVER_ERROR;
+		transactionData->transactionState = INTERNAL_SERVER_ERROR;
 		return INTERNAL_SERVER_ERROR;
 	}
-	else if (isAmountAvailable(&user_terminal, accountsDB) == SERVER_OK) {
+	else if (isAmountAvailable(&userTerm, accountsDB) == SERVER_OK) {
 
-		transData->transState = APPROVED;
+		transactionData->transactionState = APPROVED;
 		return APPROVED;
 	}
 }
@@ -95,12 +92,12 @@ EN_serverError_t saveTransaction(ST_transaction_t* transData) {
 	{
 		if ((*(transData + i)).transactionSequenceNumber == 0)
 		{
-			strcpy(transData->cardHolderData.cardHolderName, user_card.cardHolderName);
-			strcpy(transData->cardHolderData.cardExpirationDate, user_card.cardExpirationDate);
-			strcpy(transData->cardHolderData.primaryAccountNumber, user_card.primaryAccountNumber);
-			strcpy(transData->terminalData.transactionDate, user_terminal.transactionDate);
-			transData->terminalData.maxTransAmount = user_terminal.maxTransAmount;
-			transData->terminalData.transAmount = user_terminal.transAmount;
+			strcpy(transData->cardHolderData.cardHolderName, userCard.cardHolderName);
+			strcpy(transData->cardHolderData.cardExpirationDate, userCard.cardExpirationDate);
+			strcpy(transData->cardHolderData.primaryAccountNumber, userCard.primaryAccountNumber);
+			strcpy(transData->terminalData.transactionDate, userTerm.transactionDate);
+			transData->terminalData.maxTransAmount = userTerm.maxTransAmount;
+			transData->terminalData.transAmount = userTerm.transAmount;
 			transData->transactionSequenceNumber = i + 1;
 
 			if (transData->cardHolderData.cardHolderName == 0) {
@@ -156,9 +153,9 @@ void listSavedTransactions(void) {
 	}
 	else
 	{
-		printf("Transaction Sequence Number: %d\n", (*(transDB + NUM)).transactionSequenceNumber);
-		printf("Transaction Date: %s\n", (*(transDB + NUM)).terminalData.transactionDate);
-		printf("Transaction Amount: %.1f\n", (*(transDB + NUM)).terminalData.transAmount);
+		printf("Transaction Sequence Number: %d\n", (*(transDB + num)).transactionSequenceNumber);
+		printf("Transaction Date: %s\n", (*(transDB + num)).terminalData.transactionDate);
+		printf("Transaction Amount: %.1f\n", (*(transDB + num)).terminalData.transAmount);
 
 		if (recieveTransactionData(transDB) == APPROVED) {
 
@@ -180,10 +177,10 @@ void listSavedTransactions(void) {
 			printf("Transaction state: INTERNAL_SERVER_ERROR \n");
 		}
 
-		printf("Terminal Max Amount: %.1f\n", (*(transDB + NUM)).terminalData.maxTransAmount);
-		printf("Cardholder Name: %s\n", (*(transDB + NUM)).cardHolderData.cardHolderName);
-		printf("PAN: %s\n", (*(transDB + NUM)).cardHolderData.primaryAccountNumber);
-		printf("Card Expiration Date: %s\n", (*(transDB + NUM)).cardHolderData.cardExpirationDate);
+		printf("Terminal Max Amount: %.1f\n", (*(transDB + num)).terminalData.maxTransAmount);
+		printf("Cardholder Name: %s\n", (*(transDB + num)).cardHolderData.cardHolderName);
+		printf("PAN: %s\n", (*(transDB + num)).cardHolderData.primaryAccountNumber);
+		printf("Card Expiration Date: %s\n", (*(transDB + num)).cardHolderData.cardExpirationDate);
 	}
 	
 	printf("#################################\n");

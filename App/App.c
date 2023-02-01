@@ -5,8 +5,8 @@
 
 
 
-ST_cardData_t user_card;
-ST_terminalData_t user_terminal;
+ST_cardData_t userCard;
+ST_terminalData_t userTerm;
 extern int Account_NUM;
 extern ST_accountsDB_t accountsDB[255];
 extern ST_transaction_t transDB[255];
@@ -16,13 +16,13 @@ int number_of_transactions;
 
 bool card() {
 
-	if (getCardHolderName(&user_card) == CARD_OK)
+	if (getCardHolderName(&userCard) == CARD_OK)
 	{		
 
-		if (getCardExpiryDate(&user_card) == CARD_OK)
+		if (getCardExpiryDate(&userCard) == CARD_OK)
 		{
 
-			if (getCardPAN(&user_card) == CARD_OK)
+			if (getCardPAN(&userCard) == CARD_OK)
 			{				
 				return true;
 			}
@@ -40,19 +40,19 @@ bool card() {
 
 void terminal() {
 	
-	if (getTransactionDate(&user_terminal) == TERMINAL_OK) {
+	if (getTransactionDate(&userTerm) == TERMINAL_OK) {
 
-		if (isCardExpired(&user_card, &user_terminal) == TERMINAL_OK) {
+		if (isCardExpired(&userCard, &userTerm) == TERMINAL_OK) {
 			
-			if (getTransactionAmount(&user_terminal) == TERMINAL_OK) {
+			if (getTransactionAmount(&userTerm) == TERMINAL_OK) {
 				
 				float m = 50000;
 
-				if (setMaxAmount(&user_terminal, &m ) == TERMINAL_OK) {
+				if (setMaxAmount(&userTerm, &m ) == TERMINAL_OK) {
 
 		
 
-					if (isBelowMaxAmount(&user_terminal) == TERMINAL_OK)
+					if (isBelowMaxAmount(&userTerm) == TERMINAL_OK)
 					{
 						server();
 					}
@@ -87,13 +87,13 @@ void terminal() {
 
 void server() {
 
-	if (isValidAccount(&user_card, accountsDB) == SERVER_OK) {
+	if (isValidAccount(&userCard, accountsDB) == SERVER_OK) {
 
 		if (isBlockedAccount(accountsDB) == SERVER_OK) {
 
-			if (isAmountAvailable(&user_terminal, accountsDB) == SERVER_OK) {
+			if (isAmountAvailable(&userTerm, accountsDB) == SERVER_OK) {
 
-				accountsDB[Account_NUM].balance -= user_terminal.transAmount;
+				accountsDB[Account_NUM].balance -= userTerm.transAmount;
 
 				printf(" Successful transaction \n");
 

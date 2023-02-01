@@ -1,7 +1,7 @@
 #include "terminal.h" 
 
-extern ST_cardData_t user_card;
-extern ST_terminalData_t user_terminal;
+extern ST_cardData_t userCard;
+extern ST_terminalData_t userTerm;
 
 void getTransactionDateTest(void) {
 
@@ -69,7 +69,7 @@ void getTransactionDateTest(void) {
 
         //snprintf(dateAsString, sizeof(dateAsString), "%s/%s/%s", dds, mms, yys);//I then concatenate the new substrings to form the date
 
-        *(user_terminal.transactionDate) = dateAsString; 
+        *(userTerm.transactionDate) = dateAsString; 
     
     
     }
@@ -169,7 +169,7 @@ void getTransactionAmountTest(void)
     else
     {
         printf("\nActual result: Pass");
-        user_terminal.transAmount = transAmount;
+        userTerm.transAmount = transAmount;
     }
 
 
@@ -184,7 +184,7 @@ void getTransactionAmountTest(void)
     else
     {
         printf("\nActual result: Pass");
-        user_terminal.transAmount = transAmount;
+        userTerm.transAmount = transAmount;
     }
 }
 
@@ -195,7 +195,7 @@ void getTransactionAmountTest(void)
     int input = 1000;
 
 
-    if ((input > user_terminal.maxTransAmount))
+    if ((input > userTerm.maxTransAmount))
     {
         printf("\nExceeded max amount");
     }
@@ -206,7 +206,7 @@ void getTransactionAmountTest(void)
      input = 6000;
 
 
-    if ((input > user_terminal.maxTransAmount))
+    if ((input > userTerm.maxTransAmount))
     {
         printf("\nExceeded max amount");
     }
