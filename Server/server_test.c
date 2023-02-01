@@ -4,7 +4,7 @@ extern ST_terminalData_t userTerm;
 
 extern ST_accountsDB_t accountsDB[255];
 
-extern ST_transaction_t transDB[255] ;
+extern ST_transaction_t transactionDB[255] ;
 
 #define max_amount 50000
 

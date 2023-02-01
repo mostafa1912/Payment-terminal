@@ -7,10 +7,10 @@
 
 ST_cardData_t userCard;
 ST_terminalData_t userTerm;
-extern int Account_NUM;
+extern int AccountIndex;
 extern ST_accountsDB_t accountsDB[255];
-extern ST_transaction_t transDB[255];
-int number_of_transactions;
+extern ST_transaction_t transactionDB[255];
+int transactionCount;
 
 
 
@@ -30,9 +30,6 @@ bool card() {
 	}
 
 	return false;
-
-
-
 
 }
 
@@ -93,11 +90,11 @@ void server() {
 
 			if (isAmountAvailable(&userTerm, accountsDB) == SERVER_OK) {
 
-				accountsDB[Account_NUM].balance -= userTerm.transAmount;
+				accountsDB[AccountIndex].balance -= userTerm.transAmount;
 
 				printf(" Successful transaction \n");
 
-				printf("your balance now is : %.1f \n", accountsDB[Account_NUM].balance);
+				printf("your balance now is : %.1f \n", accountsDB[AccountIndex].balance);
 			}
 
 			else
@@ -113,8 +110,8 @@ void server() {
 		}
 	}
 
-	recieveTransactionData(transDB);
-	saveTransaction(transDB);
+	recieveTransactionData(transactionDB);
+	saveTransaction(transactionDB);
 
 
 
@@ -123,25 +120,20 @@ void server() {
 void appStart() {
 
 	printf("Please enter number of transactions: \n");
-	scanf("%d", &number_of_transactions);
+	scanf("%d", &transactionCount);
 
-	for (int n = 0; n < number_of_transactions; n++)
+	for (int i = 0; i < transactionCount; i++)
 	{
-		if (card() == true) {
+		if (card()) {
 			terminal();
 			listSavedTransactions();
-			printf("Thank you for your time\n");
+			printf("Thank you\n");
 
 
 		}
 		else
-		{
-			printf("Please fill your info again \n");
-		}
+			printf("Please try again \n");
+		
 	}
-
-
-
-
 }
 
