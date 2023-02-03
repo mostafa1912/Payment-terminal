@@ -50,64 +50,39 @@ void terminal() {
 		
 
 					if (isBelowMaxAmount(&userTerm) == TERMINAL_OK)
-					{
 						server();
-					}
 
-					else {
+					else 
 						printf("The amount you entered exceeds the max amount  \n");
-					}
-
 				}
 
 			}
-			else {
-
+			else 
 				printf("Invalid transaction amount \n");
-
-			}
-
 		}
-
-		else {
-
+		else 
 			printf("Card is expired \n");
-		}
 	}
-	else {
-
+	else 
 		printf("Wrong transaction date \n");
-	}
-
 }
 
 
 void server() {
 
 	if (isValidAccount(&userCard, accountsDB) == SERVER_OK) {
-
 		if (isBlockedAccount(accountsDB) == SERVER_OK) {
-
 			if (isAmountAvailable(&userTerm, accountsDB) == SERVER_OK) {
-
 				accountsDB[AccountIndex].balance -= userTerm.transAmount;
-
 				printf(" Successful transaction \n");
-
 				printf("your balance now is : %.1f \n", accountsDB[AccountIndex].balance);
 			}
 
 			else
-			{
-
 				printf("Insufficient amount \n");
-			}
 		}
-
-		else {
-
+		else 
 			printf("Blocked account \n");
-		}
 	}
 
 	recieveTransactionData(transactionDB);
