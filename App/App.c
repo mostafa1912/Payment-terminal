@@ -15,22 +15,15 @@ int transactionCount;
 
 
 bool card() {
-
 	if (getCardHolderName(&userCard) == CARD_OK)
 	{		
-
 		if (getCardExpiryDate(&userCard) == CARD_OK)
 		{
-
 			if (getCardPAN(&userCard) == CARD_OK)
-			{				
 				return true;
-			}
 		}
 	}
-
 	return false;
-
 }
 
 
@@ -53,7 +46,7 @@ void terminal() {
 						server();
 
 					else 
-						printf("The amount you entered exceeds the max amount  \n");
+						printf("The transaction amount exceeds the max amount  \n");
 				}
 
 			}
@@ -61,10 +54,10 @@ void terminal() {
 				printf("Invalid transaction amount \n");
 		}
 		else 
-			printf("Card is expired \n");
+			printf("The used card is expired \n");
 	}
 	else 
-		printf("Wrong transaction date \n");
+		printf("Invalid transaction date \n");
 }
 
 
@@ -72,7 +65,8 @@ void server() {
 
 	if (isValidAccount(&userCard, accountsDB) == SERVER_OK) {
 		if (isBlockedAccount(accountsDB) == SERVER_OK) {
-			if (isAmountAvailable(&userTerm, accountsDB) == SERVER_OK) {
+			if (isAmountAvailable(&userTerm, accountsDB) == SERVER_OK) 
+			{
 				accountsDB[AccountIndex].balance -= userTerm.transAmount;
 				printf(" Successful transaction \n");
 				printf("your balance now is : %.1f \n", accountsDB[AccountIndex].balance);
@@ -103,12 +97,9 @@ void appStart() {
 			terminal();
 			listSavedTransactions();
 			printf("Thank you\n");
-
-
 		}
 		else
 			printf("Please try again \n");
-		
 	}
 }
 

@@ -9,7 +9,7 @@ extern int AccountIndex;
 
 
 int main() {
-	for (int i = 0; i < 5; i++) {
+	/*for (int i = 0; i < 5; i++) {
 		if (accountsDB[i].primaryAccountNumber != 0)
 		{
 			printf("%s\n", accountsDB[i].primaryAccountNumber);
@@ -17,7 +17,7 @@ int main() {
 		}
 
 
-	}
+	}*/
 	//getCardHolderNameTest();
 	
 	//getCardExpiryDateTest();
